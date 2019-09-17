@@ -1,6 +1,6 @@
 # Colombian Government Open Data Visualizator
 
-This project is delivered before finishing the WebDev class of September 17th of 2019
+This project is delivered for the deadline on Tuesday September 17th of 2019, before 8:00 pm.
 
 ## Colaborators
 
