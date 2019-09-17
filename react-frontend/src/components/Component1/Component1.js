@@ -79,7 +79,7 @@ class Component1 extends Component{
       console.log(this.state.data);
       const numData=this.state.data.map(el=>{
         return el[this.state.choice];
-      })
+      });
       const total=numData.reduce((a,b) => {
         console.log("OPT",a);
         return(
@@ -118,7 +118,7 @@ class Component1 extends Component{
           <div className="col-12 col-sm-6" style={{"text-align":"left"}} ref={this.myRef}>
           </div>
           <div className="col-12 col-sm-6">
-           {choiceRenderer}
+            {choiceRenderer}
           </div>
         </div>
         
