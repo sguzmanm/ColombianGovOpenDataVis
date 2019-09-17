@@ -1,6 +1,6 @@
-# Colombian Government Open Data Visualizator
+# Colombian Government Open Data Visualizer
 
-This project is delivered before finishing the WebDev class of September 17th of 2019
+This project is delivered for the deadline on Tuesday September 17th of 2019, before 8:00 pm.
 
 ## Colaborators
 
@@ -10,7 +10,9 @@ This project is delivered before finishing the WebDev class of September 17th of
 
 ## Description
 
-Colombian Government Open Data Visualizator is an app for visualizing data from Datos Abiertos Colombia (https://datos.gov.co/) through navio. You only have to put the link of the API for querying the data and, in a matter of a creative feature, you can type the name of a label with numeric values for getting stats (average,sum.min and max) if you want to.
+Colombian Government Open Data Visualizator is an app for visualizing data from Datos Abiertos Colombia (https://datos.gov.co/) through [navio](https://navio.dev/). You only have to put the link of the API for querying the data and, in a matter of a creative feature, you can type the name of a label with numeric values for getting stats (average,sum.min and max) if you want to.
+
+For information about libs and technologies used, please visit the [frontend folder](https://github.com/sguzmanm/ColombianGovOpenDataVis/tree/master/react-frontend) 
 
 ## Objectives
 
@@ -40,7 +42,7 @@ Verify that nodejs is installed by running "node -v" on terminal or cmd. It can 
 
 ### Steps to run development version
 
-1. Check frontend folder for complete instructions on how to execute the frontend
+1. Check [frontend folder](https://github.com/sguzmanm/ColombianGovOpenDataVis/tree/master/react-frontend) for complete instructions on how to execute the frontend
 
 ## Screenshots
 

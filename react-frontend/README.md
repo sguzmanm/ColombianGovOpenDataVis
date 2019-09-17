@@ -1,6 +1,6 @@
-# Colombian Government Open Data Visualizator Frontend
+# Colombian Government Open Data Visualizer Frontend
 
-This is the frontend for the project: Colombian Government Open Data Visualizator.
+This is the frontend for the project: Colombian Government Open Data Visualizer.
 
 ## Description
 
