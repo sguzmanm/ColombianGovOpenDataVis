@@ -48,4 +48,4 @@ Verify that nodejs is installed by running "node -v" on terminal or cmd. It can 
 
 ## License
 
-This project is public under the MIT license, found [here](https://github.com/sguzmanm/ColombianGovOpenDataVis/blob/master/README.md)
+This project is public under the MIT license, found [here](https://github.com/sguzmanm/ColombianGovOpenDataVis/blob/master/LICENSE)
