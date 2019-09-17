@@ -5,6 +5,7 @@ This is the frontend for the project: Colombian Government Open Data Visualizato
 ## Description
 
 The frontend was built using React as the main library.
+**Deployed at:** https://colombiangovopendatavis.firebaseapp.com/
 
 ## Libs
 
@@ -33,9 +34,11 @@ The app should be running at port 3000, this is made for developing. Once the ap
 npm run build
 ```
 
-This will generate a dist folder with the production ready version of the frontend. Please post it in a server for displaying it.
+This will generate a build folder with the production ready version of the frontend. With this "build" folder you can deploy the app in a static web server of your preference.
 
-## Example inputs in front
+In the specific case of this project, I used Firebase CLI to deploy the app at "https://colombiangovopendatavis.firebaseapp.com/"; for this reason, you can find in this project 3 config files: ".firebase",".firebaserc" and "firebase.json"
+
+## Example inputs in the app
 
 - link: https://www.datos.gov.co/resource/fcsx-656w.json
 - numeric_label: numero_de_habitantes
@@ -48,10 +51,13 @@ eslint --debug <Path to file> --fix
 
 ## Folder structure
 
-- src: Contains the code developed for the application
-  - App.js: Contains the app component. This is the main component of the app
+- .firebase: Firebase config dir.
+- public: Public files, including index.html, icons and favicon.
+- src: Contains the code developed for the application.
+  - App.js: Contains the app component. This is the main component of the app.
   - assets: Contains main assets of the project: icons, images, etc.
   - components: Contains all app components besides app itself
   - index.js: Main file needed for react to build the SPA
-  - public: Public files
-- dist: Where the production ready app is located in order to be copied to the backend
+- build: Where the production ready app is located in order to be deployed in a static server.
+- .firebasesrc: Project name for firebase CLI deployment.
+- firebase.json: Setup of folder for deploying files from "build" config.
