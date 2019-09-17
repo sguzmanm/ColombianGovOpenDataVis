@@ -28,7 +28,7 @@ For information about libs and technologies used, please visit the [frontend fol
 This project was developed using the MERN stack.
 
 - **React JS**: A Front End library useful for creating components. https://reactjs.org/
-- **Navio**: A data visualizator. https://navio.dev/
+- **Navio**: A visualization widget. https://navio.dev/
 
 Some extra dependencies were included in the project. Each can be seen in react-front-end folder or in the package.json files in the respective folder.
 
