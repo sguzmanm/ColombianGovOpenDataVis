@@ -1,12 +1,12 @@
 import React,{Component} from "react";
-import "./Component1.css";
+import "./NavioComponent.css";
 
 import PropTypes from "prop-types";
 
 import navio from "navio";
 
 
-class Component1 extends Component{
+class NavioComponent extends Component{
 
   constructor(props){
     super(props);
@@ -19,7 +19,7 @@ class Component1 extends Component{
     if(!this.props.data || this.props.data.length===0)
       return;
 
-    let nv= navio(this.navioRef.current, 1000);
+    let nv= navio(this.navioRef.current, 600);
 
     // NAVIO Step 2. Load your data!
     nv.data(this.props.data);
@@ -31,18 +31,16 @@ class Component1 extends Component{
   render()
   {
     return(
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-12 col-sm-6" style={{textAlign:"left"}} ref={this.navioRef}>
-          </div>
+      <div className="col-12 col-sm-6">
+        <div style={{textAlign:"left"}} ref={this.navioRef}>
         </div>
       </div>
     );
   }
 }
 
-Component1.propTypes={
+NavioComponent.propTypes={
   data:PropTypes.array
 };
 
-export default Component1;
+export default NavioComponent;
