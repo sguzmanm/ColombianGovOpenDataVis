@@ -8,10 +8,6 @@
 
   [Personal Site](https://sguzmanm.github.io/i-am-sergio-guzman/) - [GitHub](https://github.com/sguzmanm)
 
-## Links
-
-**Deployed at:** --Insert deploy link
-
 ## Description
 
 -- Insert detailed description here
@@ -28,8 +24,6 @@ This project was developed using the MERN stack.
 - **Navio**: A data visualizator. https://navio.dev/
 
 Some extra dependencies were included in the project. Each can be seen in react-front-end folder or in the package.json files in the respective folder.
-
-The application is deployed in https://heroku.com/
 
 ## Instructions to execute
 
@@ -49,4 +43,4 @@ Verify that nodejs is installed by running "node -v" on terminal or cmd. It can 
 
 ## License
 
-This project is public under the MIT license, found [here](https://github.com/sguzmanm/academical-reborn/blob/master/LICENSE)
+This project is public under the MIT license, found [here](https://github.com/sguzmanm/ColombianGovOpenDataVis/blob/master/README.md)
