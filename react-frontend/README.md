@@ -35,6 +35,11 @@ npm run build
 
 This will generate a dist folder with the production ready version of the frontend. Please post it in a server for displaying it.
 
+## Example inputs in front
+
+- link: https://www.datos.gov.co/resource/fcsx-656w.json
+- numeric_label: numero_de_habitantes
+
 ## Fix linting
 
 ```
