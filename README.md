@@ -1,7 +1,5 @@
 # Colombian Government Open Data Visualizator
 
---Insert general app objective here
-
 ## Colaborators
 
 - Sergio Guzmán Mayorga:
