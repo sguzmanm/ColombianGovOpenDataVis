@@ -1,4 +1,4 @@
-# Colombian Government Open Data Visualizator
+# Colombian Government Open Data Visualizator Frontend
 
 This is the frontend for the project: Colombian Government Open Data Visualizator.
 
@@ -34,6 +34,12 @@ npm run build
 ```
 
 This will generate a dist folder with the production ready version of the frontend. Please post it in a server for displaying it.
+
+## Fix linting
+
+```
+eslint --debug <Path to file> --fix
+```
 
 ## Folder structure
 
