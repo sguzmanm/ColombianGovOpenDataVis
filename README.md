@@ -1,4 +1,4 @@
-# Colombian Government Open Data Visualizator
+# Colombian Government Open Data Visualizer
 
 This project is delivered for the deadline on Tuesday September 17th of 2019, before 8:00 pm.
 
