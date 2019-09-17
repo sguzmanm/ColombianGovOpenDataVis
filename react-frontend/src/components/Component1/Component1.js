@@ -12,8 +12,11 @@ class Component1 extends Component{
     super(props);
     this.state={
       data:[],
-      URL:"",
-      choice:""
+      url:"",
+      choice:"",
+      numPage:1,
+      finished:false,
+      loading:false
     };
 
     this.myRef = React.createRef();
@@ -24,8 +27,46 @@ class Component1 extends Component{
     this.handleSubmit = this.handleSubmit.bind(this);    
   }
 
-  getData(){
+  timeout(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  async getData(){
     console.log("Fetch data");
+    const numRegistries=100
+    
+    try{
+      while(!this.state.finished)
+      {
+        let req=await fetch(`${this.state.url}?$limit=${numRegistries}&$offset=${(this.state.numPage-1)*numRegistries}`,{
+          method:"GET"
+        });
+
+        let currentData=await req.json()
+
+        console.log("DATA",currentData,this.state.numPage);
+        if(currentData.length===0)
+        {
+          this.setState({finished:true})
+        }
+        else
+        {
+          this.setState({
+            data:this.state.data.concat(currentData),
+            numPage:this.state.numPage+1
+          })
+          console.log("Start")
+          console.log(this.state.data)
+          await this.timeout(100)
+          console.log("Time")
+        }
+      }
+    }
+    catch(e)
+    {
+      console.error(e);
+    }
+    
     fetch(this.state.url,{
       method:"GET"
     }).then((response)=>{
@@ -51,7 +92,9 @@ class Component1 extends Component{
     // NAVIO Step 3. Detect your attributes (or load them manually)
     nv.addAllAttribs();
 
-
+    this.setState({
+      loading:false    
+    })
 
   }
 
@@ -65,8 +108,14 @@ class Component1 extends Component{
   }
     
   handleSubmit(event) {
+    if(this.state.loading)
+      return;
     console.log("A new val was submitted: ",this.state.newEl);
     event.preventDefault();
+    this.setState({
+      loading:true,
+      numPage:1    
+    })
     this.getData();
   }
 
@@ -74,25 +123,28 @@ class Component1 extends Component{
   render()
   {
     let choiceRenderer=null;
-    if(this.state.choice!=="" && this.state.data.length!==0)
+    if(this.state.finished && this.state.choice!=="" && this.state.data.length!==0)
     {
       console.log(this.state.data);
       const numData=this.state.data.map(el=>{
         return el[this.state.choice];
-      });
-      const total=numData.reduce((a,b) => {
-        console.log("OPT",a);
+      }).filter((el)=>!isNaN(el));
+
+      const sum=numData.reduce((a,b) => {
+        console.log("OPT",a,parseFloat(a));
         return(
-          parseInt(a,10) + parseInt(b,10)
+          parseFloat(a) + parseFloat(b)
         );
       });
-      const average=  total/ this.state.data.length;
+      console.log(sum,numData.length)
+      const average=  sum/ numData.length;
       choiceRenderer=(
-        <div className="">
-          <p>Total {total}</p>
+        <div className="col-12 col-sm-6">
+          <p>Sum {sum}</p>
           <p>Average {average}</p>
           <p>Min {Math.min(...numData) }</p>
           <p>Max {Math.max(...numData) }</p>
+          <p>Numeric data {numData.length}</p>
         </div>
       );
     }
@@ -105,23 +157,33 @@ class Component1 extends Component{
           <small id="help" className="form-text text-muted">Please put the URL for getting data from DatosAbiertos</small>
 
           <label htmlFor="inputChoice">Your numeric field of choice</label>
-          <input name="choice" className="form-control" id="inputChoice" aria-describedby="choiceHelp" placeholder="Enter your numeric filed of choice" value={this.state.choice} onChange={this.handleChange}/>
+          <input name="choice" className="form-control" id="inputChoice" aria-describedby="choiceHelp" placeholder="Enter your numeric field of choice" value={this.state.choice} onChange={this.handleChange}/>
           <small id="choiceHelp" className="form-text text-muted">Please put the URL for getting data from DatosAbiertos</small>
         </div>
-        <button type="submit" className="btn btn-primary">Get</button>
+        <button type="submit" className="btn btn-primary">
+          {this.state.loading?<span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>:<span></span>}
+          {this.state.loading?'Loading... Page '+this.state.numPage:'Get'}
+        </button>
       </form>
     );
+
+    let content=null;
+
+    if(this.state.finished)
+    {
+      content=(
+        <div className="row">
+          <div className="col-12 col-sm-6" style={{textAlign:"left"}} ref={this.myRef}>
+          </div>
+          {choiceRenderer}
+        </div>
+      )
+    }
+
     return(
       <div className="container-fluid">
         {addElement}
-        <div className="row">
-          <div className="col-12 col-sm-6" style={{"text-align":"left"}} ref={this.myRef}>
-          </div>
-          <div className="col-12 col-sm-6">
-            {choiceRenderer}
-          </div>
-        </div>
-        
+        {content}
       </div>
     );
   }
