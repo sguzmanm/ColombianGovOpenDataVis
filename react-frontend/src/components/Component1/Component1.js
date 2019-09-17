@@ -4,20 +4,21 @@ import "./Component1.css";
 
 import PropTypes from "prop-types";
 
+import navio from "navio";
+
+
 class Component1 extends Component{
 
   constructor(props){
     super(props);
     this.state={
-      title:"HOLA",
       data:[],
-      newEl:{
-        title:"",
-        description:"",
-        num:0
-      }
+      URL:''
     };
-    this.fun1=this.fun1.bind(this);
+
+    this.myRef = React.createRef();
+
+    this.setNavioData=this.setNavioData.bind(this);
     this.addElement=this.addElement.bind(this);
 
     this.handleChange = this.handleChange.bind(this);
@@ -25,7 +26,8 @@ class Component1 extends Component{
   }
 
   getData(){
-    fetch(`${URL}res1`,{
+    console.log("Fetch data");
+    fetch(this.state.url,{
       method:"GET"
     }).then((response)=>{
       return response.json();
@@ -34,6 +36,7 @@ class Component1 extends Component{
       this.setState({
         data:json
       });
+      this.setNavioData();
     }).catch((err)=>{
       console.error(err);
     });
@@ -68,30 +71,30 @@ class Component1 extends Component{
     });
   }
 
-  fun1(){
-    console.log("HOLA");
-  }
+  setNavioData(){
+  console.log("SET DATA");
+   let nv= navio(this.myRef.current, 600);
 
-  componentDidMount(){
-    this.fun1();
-    this.getData();
+   // NAVIO Step 2. Load your data!
+   nv.data(this.state.data);
+
+   // NAVIO Step 3. Detect your attributes (or load them manually)
+   nv.addAllAttribs();
   }
 
   handleChange(event) {
-    let newState=this.state.newEl;
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
-
-    newState[name]=value;
     this.setState({
-      newEl:newState
+      [name]:value
     });
   }
     
   handleSubmit(event) {
     console.log("A new val was submitted: ",this.state.newEl);
     event.preventDefault();
+    this.getData();
     this.addElement(this.state.newEl);
 
   }
@@ -99,43 +102,24 @@ class Component1 extends Component{
 
   render()
   {
-    const mapObjects= this.state.data.map(el=>(
-      <div className="container" key={el._id}>
-        <div className="row">
-          <div className="col-12 col-sm-4 bg-danger">
-            <p className="title">{el.title+":"+el.description}</p>
-            <h6>{el.num}</h6>
-            <p>{el.title.toString()}</p>
-          </div>
-        </div>
-      </div>
-    ));
-
     const addElement = (
       <form onSubmit={this.handleSubmit}>
         <div className="form-group">
-          <label htmlFor="exampleInputEmail1">Email address</label>
-          <input name="title" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value={this.state.newEl.title} onChange={this.handleChange}/>
-          <small id="emailHelp" className="form-text text-muted">We will never share your email with anyone else.</small>
+          <label htmlFor="inputTitle">Your dataset</label>
+          <input name="url" className="form-control" id="inputTitle" aria-describedby="help" placeholder="Enter email" value={this.state.url} onChange={this.handleChange}/>
+          <small id="help" className="form-text text-muted">Please put the URL for getting data from DatosAbiertos</small>
         </div>
-        <div className="form-group">
-          <label htmlFor="exampleInputPassword1">Password</label>
-          <textarea name="description" className="form-control" id="exampleInputPassword1" placeholder="Password" value={this.state.newEl.description} onChange={this.handleChange}/>
-        </div>
-        <div className="form-group form-check">
-          <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
-          <input name="num" type="range" className="form-check-input" id="exampleCheck1" value={this.state.newEl.num} onChange={this.handleChange}/>
-        </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <button type="submit" className="btn btn-primary">Get</button>
       </form>
     );
     return(
-      <div className="Hola" onClick={this.fun1}>
-        {this.state.title}
-        <p className="title">{this.props.description}</p>
+      <div className="container-fluid">
         {addElement}
-        <button className="btn btn-primary" onClick={()=>this.addElement()}>Add</button>
-        {mapObjects}
+        <div className="row">
+          <div className="col-12 col-sm-6" style={{'text-align':'left'}} ref={this.myRef}>
+          </div>
+        </div>
+        
       </div>
     );
   }

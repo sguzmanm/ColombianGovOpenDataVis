@@ -30,7 +30,7 @@ const routes=()=>{
               </ul>
             </nav>
     
-            <Route path="/" exact component={Home} />
+            <Route path="/" exact component={()=><Component1 description="HOla hola hola"/>} />
             <Route path="/comp1/" component={()=><Component1 description="HOla hola hola"/>} />
             <Route path="/topics/:id" component={Topic} />
           </div>
