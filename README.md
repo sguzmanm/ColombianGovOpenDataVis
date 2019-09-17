@@ -1,5 +1,7 @@
 # Colombian Government Open Data Visualizator
 
+This project is delivered before finishing the WebDev class of September 17th of 2019
+
 ## Colaborators
 
 - Sergio Guzmán Mayorga:
