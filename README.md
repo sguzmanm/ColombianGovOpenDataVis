@@ -10,7 +10,7 @@ This project is delivered before finishing the WebDev class of September 17th of
 
 ## Description
 
-Colombian Government Open Data Visualizator is an app for visualizing data from Datos Abiertos Colombia (https://datos.gov.co/) through navio. You only have to put the link of the API for querying the data and choose a criteria for getting stats if you want to.
+Colombian Government Open Data Visualizator is an app for visualizing data from Datos Abiertos Colombia (https://datos.gov.co/) through navio. You only have to put the link of the API for querying the data and, in a matter of a creative feature, you can type the name of a label with numeric values for getting stats (average,sum.min and max) if you want to.
 
 ## Objectives
 

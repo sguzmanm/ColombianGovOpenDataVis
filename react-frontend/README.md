@@ -38,17 +38,6 @@ This will generate a build folder with the production ready version of the front
 
 In the specific case of this project, I used Firebase CLI to deploy the app at "https://colombiangovopendatavis.firebaseapp.com/"; for this reason, you can find in this project 3 config files: ".firebase",".firebaserc" and "firebase.json"
 
-## Example inputs in the app
-
-- link: https://www.datos.gov.co/resource/fcsx-656w.json
-- numeric_label: numero_de_habitantes
-
-## Fix linting
-
-```
-eslint --debug <Path to file> --fix
-```
-
 ## Folder structure
 
 - .firebase: Firebase config dir.
@@ -61,3 +50,27 @@ eslint --debug <Path to file> --fix
 - build: Where the production ready app is located in order to be deployed in a static server.
 - .firebasesrc: Project name for firebase CLI deployment.
 - firebase.json: Setup of folder for deploying files from "build" config.
+
+## Others
+
+### Running tips
+
+- For some weird reason my child component "NavioComponent" is not updating when there is a new get request, it just resets to an empty array. So please when making multiple requests, press the get button twice.
+
+### Example inputs in the app
+
+1.
+
+- link: https://www.datos.gov.co/resource/fcsx-656w.json
+- numeric_label: numero_de_habitantes
+
+2.
+
+- link: https://www.datos.gov.co/resource/ji8i-4anb.json
+- numeric_label: poblacion_5_16
+
+### Fix linting
+
+```
+eslint --debug <Path to file> --fix
+```
